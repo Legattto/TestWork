@@ -18,6 +18,7 @@ type Config struct {
 		PerSecond int
 	}
 }
+var testCounter int = 0
 
 func main() {
 	// Создаем новое приложение с помощью fx
@@ -84,6 +85,7 @@ func newRootCmd(logger *zap.Logger, restClient *resty.Client) *cobra.Command {
 
 			// Отправляем запросы
 			for i := 0; i < cfg.Requests.Amount; i++ {
+				testCounter++
 				resp, err := restClient.R().
 					SetBody(map[string]interface{}{"iteration": i}).
 					Post(cfg.URL)
