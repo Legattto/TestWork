@@ -37,4 +37,8 @@ func TestStartCmd(t *testing.T) {
 
 	// Запускаем команду
 	startCmd(logger, rootCmd)
+	
+	if testCounter < 1 {
+		t.Errorf("unexpected counter value: got %d, want %d", testCounter, 1)
+	}
 }
